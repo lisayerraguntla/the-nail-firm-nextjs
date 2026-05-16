@@ -14,6 +14,7 @@ export default function Nav() {
         </Link>
 
         <div className="hidden items-center gap-7 text-sm text-white/72 md:flex">
+          <Link href="#about" className="transition hover:text-blush">About</Link>
           <Link href="#services" className="transition hover:text-blush">Services</Link>
           <Link href="#gallery" className="transition hover:text-blush">Gallery</Link>
           <Link href="#reviews" className="transition hover:text-blush">Reviews</Link>

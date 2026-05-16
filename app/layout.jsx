@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'The Nail Firm | Luxury Nails in Norwich',
-  description: 'Luxury nail artistry in Norwich for Gel X, BIAB, detailed nail art, and polished appointments.',
+  title: 'The Nail Firm | Beauty Appointments in Norwich',
+  description: 'Affordable beauty appointments in Norwich for nails, BIAB, lashes, teeth whitening, waxing, peels, and polished finishes.',
 };
 
 export default function RootLayout({ children }) {

@@ -1,4 +1,4 @@
-import { Footprints, Gem, ShieldCheck } from 'lucide-react';
+import { Eye, Footprints, Gem, Leaf, Scissors, ShieldCheck, Smile, Sparkles } from 'lucide-react';
 
 const services = [
   {
@@ -39,6 +39,76 @@ const services = [
       ['Other design add-on', '+£5'],
     ],
   },
+  {
+    icon: Eye,
+    title: 'Lash Extensions',
+    price: 'from £30',
+    text: 'Soft everyday classics through to fuller volume sets, with infill options to keep them fresh.',
+    items: [
+      ['Classic full set', '£30'],
+      ['Hybrid full set', '£35'],
+      ['Angel set', '£40'],
+      ['Volume full set', '£45'],
+      ['Infills', '£25-£40'],
+    ],
+  },
+  {
+    icon: Sparkles,
+    title: 'UV Lash Extensions',
+    price: 'from £25',
+    text: 'A lash extension option with a glossy, lasting finish and the same soft-to-full styling choices.',
+    items: [
+      ['Classic full set', '£25'],
+      ['Hybrid full set', '£30'],
+      ['Volume full set', '£45'],
+      ['Infills', '£20-£40'],
+    ],
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Korean Lash Lift',
+    price: 'from £35',
+    text: 'Lifted natural lashes for a clean, wide-awake look without extensions.',
+    items: [
+      ['Korean lash lift', '£35'],
+      ['Korean lash lift & tint', '£40'],
+    ],
+  },
+  {
+    icon: Smile,
+    title: 'Teeth Whitening',
+    price: 'from £55',
+    text: 'Cosmetic brightening appointments designed to lift the appearance of stained teeth.',
+    items: [
+      ['30 minutes', '£55'],
+      ['45 minutes', '£65'],
+      ['60 minutes', '£85'],
+      ['90 minutes', '£95'],
+    ],
+  },
+  {
+    icon: Leaf,
+    title: 'Chemical Peel',
+    price: 'from £40',
+    text: 'Skin-smoothing treatments for face or back, planned around the area being treated.',
+    items: [
+      ['Face', '£40'],
+      ['Back', '£45'],
+    ],
+  },
+  {
+    icon: Scissors,
+    title: 'Wax',
+    price: 'from £5',
+    text: 'Quick add-on waxing services for small areas and everyday maintenance.',
+    items: [
+      ['Arms', '£15'],
+      ['Legs', '£30'],
+      ['Armpits', '£15'],
+      ['Chin', '£5'],
+      ['Upper lip', '£5'],
+    ],
+  },
 ];
 
 export default function Services() {
@@ -47,13 +117,13 @@ export default function Services() {
       <div className="relative mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="mb-3 text-sm uppercase tracking-[0.35em] text-blush">Services</p>
-          <h2 className="font-display text-5xl font-semibold md:text-7xl">A clean price menu for polished sets.</h2>
+          <h2 className="font-display text-5xl font-semibold md:text-7xl">Beauty services, grouped clearly.</h2>
           <p className="mt-5 text-lg leading-8 text-white/64">
-            Choose your base, then add the finish: solid colour, French, custom design, or a freestyle set planned around your inspo.
+            Choose your treatment, then confirm the finish, timing, and any add-ons before your appointment.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service) => {
             const Icon = service.icon;
             return (
@@ -82,7 +152,7 @@ export default function Services() {
         </div>
 
         <div className="mt-6 rounded-3xl border border-white/10 bg-white/4 px-6 py-5 text-sm leading-7 text-white/62">
-          Design pricing depends on detail level: simple, middle, complex, or over-the-top. DM before booking so timing and final price can be confirmed.
+          Nail design pricing depends on detail level: simple, middle, complex, or over-the-top. DM before booking so timing and final price can be confirmed.
         </div>
       </div>
     </section>

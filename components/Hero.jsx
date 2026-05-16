@@ -16,20 +16,20 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blush/30 bg-white/5 px-4 py-2 text-sm text-blush">
-            <Star size={15} fill="currentColor" /> Luxury nail artistry in Norwich
+            <Star size={15} fill="currentColor" /> Beauty appointments in Norwich
           </div>
 
           <h1 className="font-display text-6xl font-semibold leading-[0.9] tracking-tight text-balance md:text-8xl">
-            Nails that look like a whole mood.
+            Luxury beauty at student prices.
           </h1>
 
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/72 md:text-xl">
-            A modern nail experience built around clean detail, soft luxury, creative sets, and appointment-only energy.
+            A beauty space for detailed nail sets, BIAB, lashes, teeth whitening, waxing, and skin treatments, all kept polished, personal, and affordable.
           </p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <a href={siteLinks.booking} className="group inline-flex items-center justify-center gap-2 rounded-full bg-champagne px-7 py-4 font-semibold text-ink shadow-glow transition hover:bg-blush">
-              Book your set <ArrowRight className="transition group-hover:translate-x-1" size={18} />
+              Book your appointment <ArrowRight className="transition group-hover:translate-x-1" size={18} />
             </a>
             <a href="#gallery" className="inline-flex items-center justify-center rounded-full border border-champagne/25 px-7 py-4 font-semibold text-white transition hover:border-champagne hover:text-champagne">
               View gallery
@@ -37,10 +37,12 @@ export default function Hero() {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-3 text-sm text-white/64">
-            <span className="rounded-full border border-white/10 px-4 py-2">Gel extensions</span>
+            <span className="rounded-full border border-white/10 px-4 py-2">Nails</span>
             <span className="rounded-full border border-white/10 px-4 py-2">BIAB</span>
-            <span className="rounded-full border border-white/10 px-4 py-2">French tips</span>
-            <span className="rounded-full border border-white/10 px-4 py-2">Freestyle art</span>
+            <span className="rounded-full border border-white/10 px-4 py-2">Lashes</span>
+            <span className="rounded-full border border-white/10 px-4 py-2">Teeth whitening</span>
+            <span className="rounded-full border border-white/10 px-4 py-2">Waxing</span>
+            <span className="rounded-full border border-white/10 px-4 py-2">Chemical peels</span>
           </div>
         </motion.div>
 

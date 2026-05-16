@@ -1,69 +1,104 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const images = [
-  { src: '/images/gallery-blue-floral.jpeg', title: 'Gel X extension, French tips and painted flower', layout: 'hero' },
-  { src: '/images/gallery-pop-art.jpeg', title: 'BIAB infill, go crazy', layout: 'wide' },
-  { src: '/images/gallery-gold-florals.jpeg', title: 'Gel X extension and toes, ready for her labour date', layout: 'portrait' },
-  { src: '/images/gallery-studded-french.jpeg', title: 'Gel X extension, birthday set, French tips x gold', layout: 'portrait' },
-  { src: '/images/gallery-sculpted-gold.jpeg', title: 'Gel X extension, brown gold nails', layout: 'tall' },
-  { src: '/images/gallery-monochrome-chrome.jpeg', title: 'Gel X extension, black white and silver details', layout: 'wide' },
-  { src: '/images/gallery-jewel-set.jpeg', title: 'Gel X extension, cat eye x gold', layout: 'wide' },
+  { src: '/images/gallery-blue-floral.jpeg', alt: 'Blue floral French nail set' },
+  { src: '/images/gallery-gold-florals.jpeg', alt: 'Pink floral and gold nail set' },
+  { src: '/images/gallery-pop-art.jpeg', alt: 'Bright graphic nail art set' },
+  { src: '/images/gallery-monochrome-chrome.jpeg', alt: 'Black white and silver nail set' },
+  { src: '/images/gallery-sculpted-gold.jpeg', alt: 'Brown and gold sculpted nail set' },
+  { src: '/images/gallery-studded-french.jpeg', alt: 'French tip nail set with gold details' },
+  { src: '/images/gallery-jewel-set.jpeg', alt: 'Cat eye jewel nail set' },
+  { src: '/images/gallery-blue-chrome.png', alt: 'Blue chrome nail set' },
+  { src: '/images/gallery-whitening-pink-1.png', alt: 'Teeth whitening result with pink guard' },
+  { src: '/images/gallery-whitening-blue.png', alt: 'Teeth whitening result with blue guard' },
+  { src: '/images/gallery-whitening-pink-2.png', alt: 'Teeth whitening result with pink guard' },
+  { src: '/images/gallery-whitening-green.png', alt: 'Teeth whitening result with green guard' },
 ];
 
-const layoutClasses = {
-  hero: 'md:col-span-3 md:row-span-2',
-  wide: 'md:col-span-3',
-  portrait: 'md:col-span-2',
-  tall: 'md:col-span-2 md:row-span-2',
-};
-
-const imageHeights = {
-  hero: 'h-[560px] md:h-[760px]',
-  wide: 'h-[340px] md:h-[390px]',
-  portrait: 'h-[430px]',
-  tall: 'h-[560px] md:h-[760px]',
-  default: 'h-[390px]',
-};
+const imagesPerPage = 4;
+const totalPages = Math.ceil(images.length / imagesPerPage);
 
 export default function Gallery() {
+  const [page, setPage] = useState(0);
+  const start = page * imagesPerPage;
+  const visibleImages = images.slice(start, start + imagesPerPage);
+
+  const goToPreviousPage = () => {
+    setPage((currentPage) => (currentPage === 0 ? totalPages - 1 : currentPage - 1));
+  };
+
+  const goToNextPage = () => {
+    setPage((currentPage) => (currentPage === totalPages - 1 ? 0 : currentPage + 1));
+  };
+
   return (
     <section id="gallery" className="salon-surface-alt px-4 py-24 md:px-8">
-      <div className="relative mx-auto max-w-7xl">
-        <div className="mb-14 flex flex-col justify-between gap-6 border-b border-white/10 pb-10 md:flex-row md:items-end">
+      <div className="relative mx-auto max-w-6xl">
+        <div className="mb-10 flex flex-col justify-between gap-6 border-b border-white/10 pb-8 md:flex-row md:items-end">
           <div>
             <p className="mb-3 text-sm uppercase tracking-[0.35em] text-blush">Portfolio</p>
-            <h2 className="max-w-4xl font-display text-5xl font-semibold leading-none md:text-7xl">A polished edit of soft glam details.</h2>
+            <h2 className="max-w-3xl font-display text-5xl font-semibold leading-none md:text-7xl">
+              Recent work.
+            </h2>
           </div>
-          <p className="max-w-md leading-7 text-white/62">
-            Browse a mix of clean finishes, detailed art, and appointment-ready inspiration for your next set.
-          </p>
+          <div className="flex items-center justify-between gap-5 md:justify-end">
+            <p className="text-sm uppercase tracking-[0.28em] text-champagne/70">
+              Set {page + 1} of {totalPages}
+            </p>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={goToPreviousPage}
+                className="grid h-11 w-11 place-items-center rounded-full border border-champagne/25 bg-white/4 text-champagne transition hover:border-champagne hover:bg-champagne hover:text-ink"
+                aria-label="Show previous gallery section"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                type="button"
+                onClick={goToNextPage}
+                className="grid h-11 w-11 place-items-center rounded-full border border-champagne/25 bg-white/4 text-champagne transition hover:border-champagne hover:bg-champagne hover:text-ink"
+                aria-label="Show next gallery section"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div className="grid auto-rows-auto gap-4 md:grid-cols-6 md:gap-5">
-          {images.map((image, index) => (
-            <figure
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {visibleImages.map((image, index) => (
+            <div
               key={image.src}
-              className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0e0a0d] shadow-2xl shadow-black/20 ${layoutClasses[image.layout] || ''}`}
+              className="group relative aspect-4/5 overflow-hidden rounded-2xl border border-white/10 bg-[#070706] shadow-2xl shadow-black/20"
             >
               <Image
                 src={image.src}
-                alt={image.title}
-                width={900}
-                height={1100}
-                sizes={image.layout === 'hero' || image.layout === 'wide' ? '(min-width: 768px) 50vw, 100vw' : '(min-width: 768px) 33vw, 100vw'}
-                priority={index < 2}
-                className={`w-full object-cover transition duration-700 group-hover:scale-105 ${imageHeights[image.layout] || imageHeights.default}`}
+                alt={image.alt}
+                fill
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                priority={page === 0 && index < 2}
+                className="object-cover transition duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/88 via-ink/10 to-transparent opacity-95" />
-              <figcaption className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-ink/72 p-4 backdrop-blur-xl md:inset-x-5 md:bottom-5">
-                <p className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-champagne/80">
-                  Look {String(index + 1).padStart(2, '0')}
-                </p>
-                <h3 className="font-display text-2xl leading-tight text-white md:text-3xl">
-                  {image.title}
-                </h3>
-              </figcaption>
-            </figure>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 flex justify-center gap-2">
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setPage(index)}
+              className={`h-2.5 rounded-full transition ${
+                page === index ? 'w-8 bg-champagne' : 'w-2.5 bg-white/20 hover:bg-champagne/60'
+              }`}
+              aria-label={`Show gallery section ${index + 1}`}
+            />
           ))}
         </div>
       </div>
