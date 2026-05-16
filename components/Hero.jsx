@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRight, MapPin, Star } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 import { siteLinks } from './siteLinks';
 
 export default function Hero() {
@@ -28,10 +28,10 @@ export default function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-            <a href={siteLinks.booking} className="group inline-flex items-center justify-center gap-2 rounded-full bg-blush px-7 py-4 font-semibold text-ink transition hover:bg-white">
+            <a href={siteLinks.booking} className="group inline-flex items-center justify-center gap-2 rounded-full bg-champagne px-7 py-4 font-semibold text-ink shadow-glow transition hover:bg-blush">
               Book your set <ArrowRight className="transition group-hover:translate-x-1" size={18} />
             </a>
-            <a href="#gallery" className="inline-flex items-center justify-center rounded-full border border-white/20 px-7 py-4 font-semibold text-white transition hover:border-blush hover:text-blush">
+            <a href="#gallery" className="inline-flex items-center justify-center rounded-full border border-champagne/25 px-7 py-4 font-semibold text-white transition hover:border-champagne hover:text-champagne">
               View gallery
             </a>
           </div>
@@ -50,15 +50,16 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.15 }}
           className="relative"
         >
-          <div className="absolute -inset-8 rounded-[3rem] bg-blush/10 blur-3xl" />
-          <div className="glass relative overflow-hidden rounded-[2.2rem] p-3">
-            <Image src="/images/salon-hero.jpeg" alt="Nail salon interior" width={900} height={1100} priority className="h-[570px] w-full rounded-[1.7rem] object-cover" />
-            <div className="absolute bottom-7 left-7 right-7 rounded-[1.5rem] bg-ink/72 p-5 backdrop-blur-xl">
-              <div className="flex items-center gap-2 text-blush">
-                <MapPin size={17} /> Norwich, England
-              </div>
-              <p className="mt-2 font-display text-3xl">Soft glam. Sharp detail. Premium finish.</p>
-            </div>
+          <div className="absolute -inset-8 rounded-[3rem] bg-champagne/10 blur-3xl" />
+          <div className="glass relative grid min-h-[520px] place-items-center overflow-hidden rounded-[2.2rem] p-6 md:min-h-[610px]">
+            <Image
+              src="/images/the-nail-firm-logo.png"
+              alt="The Nail Firm logo"
+              width={1100}
+              height={1100}
+              priority
+              className="h-auto w-full max-w-[540px] rounded-full object-contain shadow-glow"
+            />
           </div>
         </motion.div>
       </div>

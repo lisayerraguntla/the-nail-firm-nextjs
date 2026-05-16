@@ -58,12 +58,12 @@ export default function Services() {
             const Icon = service.icon;
             return (
               <article key={service.title} className="glass rounded-[2rem] p-7 transition hover:-translate-y-1 hover:border-blush/40">
-                <div className="mb-8 grid h-13 w-13 place-items-center rounded-2xl bg-blush text-ink">
+                <div className="mb-8 grid h-13 w-13 place-items-center rounded-2xl bg-champagne text-ink shadow-glow">
                   <Icon size={24} />
                 </div>
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-display text-3xl font-semibold">{service.title}</h3>
-                  <span className="rounded-full bg-white/10 px-3 py-1 text-sm text-blush">{service.price}</span>
+                  <span className="rounded-full bg-champagne/10 px-3 py-1 text-sm text-champagne">{service.price}</span>
                 </div>
                 <p className="mt-4 leading-7 text-white/62">{service.text}</p>
                 <div className="mt-7 space-y-3 border-t border-white/10 pt-5">
@@ -81,7 +81,7 @@ export default function Services() {
           })}
         </div>
 
-        <div className="mt-6 rounded-[1.5rem] border border-white/10 bg-white/[0.04] px-6 py-5 text-sm leading-7 text-white/62">
+        <div className="mt-6 rounded-3xl border border-white/10 bg-white/4 px-6 py-5 text-sm leading-7 text-white/62">
           Design pricing depends on detail level: simple, middle, complex, or over-the-top. DM before booking so timing and final price can be confirmed.
         </div>
       </div>

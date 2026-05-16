@@ -37,7 +37,7 @@ export default function Policies() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {policies.map((policy) => (
-              <div key={policy.title} className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5">
+              <div key={policy.title} className="rounded-3xl border border-white/10 bg-white/4 p-5">
                 <h3 className="font-display text-2xl font-semibold text-blush">{policy.title}</h3>
                 <p className="mt-3 leading-7 text-white/68">{policy.text}</p>
               </div>

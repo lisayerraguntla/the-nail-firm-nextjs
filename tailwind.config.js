@@ -7,14 +7,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ink: '#100c0f',
-        blush: '#f5d9d6',
-        rose: '#b86c72',
-        champagne: '#f2dfc7',
-        cocoa: '#4d3031',
+        ink: '#050403',
+        blush: '#d7a64d',
+        rose: '#b37a2f',
+        champagne: '#f8e7bd',
+        cocoa: '#24170a',
       },
       boxShadow: {
-        glow: '0 0 70px rgba(245, 217, 214, 0.18)',
+        glow: '0 0 70px rgba(215, 166, 77, 0.3)',
       },
       fontFamily: {
         display: ['var(--font-display)', 'serif'],

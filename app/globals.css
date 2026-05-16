@@ -17,51 +17,51 @@ html {
 body {
   margin: 0;
   background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 16px),
-    linear-gradient(155deg, rgba(245, 217, 214, 0.12), transparent 34%),
-    linear-gradient(28deg, #120d10 0%, #211015 36%, #311b22 62%, #100c0f 100%);
-  color: #fffaf8;
+    linear-gradient(115deg, rgba(248, 231, 189, 0.016) 0 1px, transparent 1px 24px),
+    radial-gradient(circle at 50% 0%, rgba(248, 231, 189, 0.028), transparent 24%),
+    linear-gradient(28deg, #020202 0%, #070706 42%, #11100e 70%, #020202 100%);
+  color: #fff8e8;
   font-family: var(--font-body), sans-serif;
 }
 
 ::selection {
-  background: #f5d9d6;
-  color: #100c0f;
+  background: #d7a64d;
+  color: #050403;
 }
 
 .glass {
   background:
-    linear-gradient(145deg, rgba(255, 250, 248, 0.1), rgba(255, 250, 248, 0.035)),
-    rgba(20, 12, 16, 0.58);
-  border: 1px solid rgba(255, 250, 248, 0.16);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+    linear-gradient(145deg, rgba(248, 231, 189, 0.12), rgba(248, 231, 189, 0.035)),
+    rgba(5, 4, 3, 0.68);
+  border: 1px solid rgba(215, 166, 77, 0.24);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(248, 231, 189, 0.08);
   backdrop-filter: blur(18px);
 }
 
 .luxury-gradient {
   background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 18px),
-    linear-gradient(145deg, rgba(245, 217, 214, 0.18), transparent 30%),
-    linear-gradient(35deg, rgba(184, 108, 114, 0.22), transparent 48%),
-    linear-gradient(135deg, #100c0f 0%, #2b151c 48%, #100c0f 100%);
+    linear-gradient(115deg, rgba(248, 231, 189, 0.018) 0 1px, transparent 1px 24px),
+    radial-gradient(circle at 72% 18%, rgba(215, 166, 77, 0.045), transparent 22%),
+    radial-gradient(circle at 8% 78%, rgba(248, 231, 189, 0.022), transparent 26%),
+    linear-gradient(135deg, #020202 0%, #0a0908 48%, #020202 100%);
 }
 
 .salon-surface {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(120deg, rgba(255, 250, 248, 0.045) 0 1px, transparent 1px 20px),
-    linear-gradient(160deg, rgba(242, 223, 199, 0.1), transparent 36%),
-    linear-gradient(28deg, #100c0f 0%, #1c1014 42%, #2c171f 100%);
+    linear-gradient(120deg, rgba(248, 231, 189, 0.016) 0 1px, transparent 1px 24px),
+    radial-gradient(circle at 12% 0%, rgba(215, 166, 77, 0.028), transparent 26%),
+    linear-gradient(28deg, #020202 0%, #080807 48%, #11100e 100%);
 }
 
 .salon-surface-alt {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(140deg, rgba(245, 217, 214, 0.055) 0 1px, transparent 1px 18px),
-    linear-gradient(210deg, rgba(184, 108, 114, 0.16), transparent 34%),
-    linear-gradient(25deg, #140d11 0%, #25151a 48%, #100c0f 100%);
+    linear-gradient(140deg, rgba(248, 231, 189, 0.016) 0 1px, transparent 1px 24px),
+    radial-gradient(circle at 88% 18%, rgba(215, 166, 77, 0.026), transparent 28%),
+    linear-gradient(25deg, #020202 0%, #090908 52%, #020202 100%);
 }
 
 .salon-surface::before,
@@ -72,16 +72,16 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, transparent, rgba(255, 250, 248, 0.06), transparent),
+    linear-gradient(90deg, transparent, rgba(248, 231, 189, 0.024), transparent),
     repeating-linear-gradient(
       100deg,
-      rgba(255, 255, 255, 0.026) 0,
-      rgba(255, 255, 255, 0.026) 1px,
+      rgba(248, 231, 189, 0.012) 0,
+      rgba(248, 231, 189, 0.012) 1px,
       transparent 1px,
-      transparent 9px
+      transparent 12px
     );
   mix-blend-mode: screen;
-  opacity: 0.42;
+  opacity: 0.26;
 }
 
 .gold-line {
@@ -89,7 +89,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(242, 223, 199, 0.75),
+    rgba(248, 231, 189, 0.78),
     transparent
   );
 }

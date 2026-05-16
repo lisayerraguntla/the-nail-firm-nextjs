@@ -17,7 +17,7 @@ export default function Booking() {
           <p className="mt-5 leading-8 text-white/64">
             Choose your service, send your nail inspiration, and confirm the details before your visit. Every set is planned with enough time for a clean finish.
           </p>
-          <a href={siteLinks.booking} className="mt-8 inline-flex rounded-full bg-blush px-7 py-4 font-semibold text-ink transition hover:bg-white">
+          <a href={siteLinks.booking} className="mt-8 inline-flex rounded-full bg-champagne px-7 py-4 font-semibold text-ink shadow-glow transition hover:bg-blush">
             Book an appointment
           </a>
         </div>
@@ -26,7 +26,7 @@ export default function Booking() {
           {steps.map(([title, text], index) => (
             <div key={title} className="rounded-[1.7rem] border border-white/10 bg-white/4 p-6">
               <div className="mb-4 flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-ink font-semibold">{index + 1}</span>
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-champagne text-ink font-semibold">{index + 1}</span>
                 <h3 className="font-display text-3xl">{title}</h3>
               </div>
               <p className="leading-7 text-white/62">{text}</p>
