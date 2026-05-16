@@ -3,9 +3,8 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star } from 'lucide-react';
-import { siteLinks } from './siteLinks';
 
-export default function Hero() {
+export default function Hero({ onNavigate }) {
   return (
     <section id="home" className="luxury-gradient relative min-h-screen overflow-hidden px-4 pb-20 pt-32 md:px-8 md:pt-40">
       <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '64px 64px' }} />
@@ -28,12 +27,20 @@ export default function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-            <a href={siteLinks.booking} className="group inline-flex items-center justify-center gap-2 rounded-full bg-champagne px-7 py-4 font-semibold text-ink shadow-glow transition hover:bg-blush">
+            <button
+              type="button"
+              onClick={() => onNavigate('booking')}
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-champagne px-7 py-4 font-semibold text-ink shadow-glow transition hover:bg-blush"
+            >
               Book your appointment <ArrowRight className="transition group-hover:translate-x-1" size={18} />
-            </a>
-            <a href="#gallery" className="inline-flex items-center justify-center rounded-full border border-champagne/25 px-7 py-4 font-semibold text-white transition hover:border-champagne hover:text-champagne">
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('gallery')}
+              className="inline-flex items-center justify-center rounded-full border border-champagne/25 px-7 py-4 font-semibold text-white transition hover:border-champagne hover:text-champagne"
+            >
               View gallery
-            </a>
+            </button>
           </div>
 
           <div className="mt-10 flex flex-wrap gap-3 text-sm text-white/64">

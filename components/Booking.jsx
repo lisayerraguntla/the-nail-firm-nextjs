@@ -9,7 +9,7 @@ const steps = [
 
 export default function Booking() {
   return (
-    <section className="salon-surface px-4 py-24 md:px-8">
+    <section id="booking" className="salon-surface px-4 py-24 md:px-8">
       <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="glass rounded-[2.2rem] p-8 md:p-10">
           <p className="mb-3 text-sm uppercase tracking-[0.35em] text-blush">Booking flow</p>
@@ -17,8 +17,8 @@ export default function Booking() {
           <p className="mt-5 leading-8 text-white/64">
             Choose your treatment, send any inspo or notes, and confirm the details before your visit. Every appointment is planned with enough time for a clean, polished finish.
           </p>
-          <a href={siteLinks.booking} className="mt-8 inline-flex rounded-full bg-champagne px-7 py-4 font-semibold text-ink shadow-glow transition hover:bg-blush">
-            Book an appointment
+          <a href={siteLinks.instagram} className="mt-8 inline-flex rounded-full bg-champagne px-7 py-4 font-semibold text-ink shadow-glow transition hover:bg-blush">
+            DM to book
           </a>
         </div>
 

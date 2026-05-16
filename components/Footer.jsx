@@ -1,7 +1,7 @@
 import { Camera, MapPin } from 'lucide-react';
 import { siteLinks } from './siteLinks';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
   return (
     <footer id="contact" className="salon-surface px-4 py-16 md:px-8">
       <div className="relative mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-white/4 p-8 md:p-10">
@@ -13,7 +13,13 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex flex-col gap-3 md:items-end">
-            <a href={siteLinks.booking} className="w-full rounded-full bg-champagne px-7 py-4 text-center font-semibold text-ink shadow-glow transition hover:bg-blush md:w-auto">Book now</a>
+            <button
+              type="button"
+              onClick={() => onNavigate('booking')}
+              className="w-full rounded-full bg-champagne px-7 py-4 text-center font-semibold text-ink shadow-glow transition hover:bg-blush md:w-auto"
+            >
+              Book now
+            </button>
             <a href={siteLinks.instagram} className="inline-flex items-center justify-center gap-2 rounded-full border border-champagne/20 px-7 py-4 text-white/75 transition hover:border-champagne hover:text-champagne"><Camera size={18} /> Instagram</a>
           </div>
         </div>
