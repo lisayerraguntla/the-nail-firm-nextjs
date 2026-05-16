@@ -70,11 +70,11 @@ export default function Gallery() {
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {visibleImages.map((image, index) => (
             <div
               key={image.src}
-              className="group relative aspect-4/5 overflow-hidden rounded-2xl border border-white/10 bg-[#070706] shadow-2xl shadow-black/20"
+              className="group relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-[#070706] shadow-2xl shadow-black/20 sm:aspect-4/5"
             >
               <Image
                 src={image.src}

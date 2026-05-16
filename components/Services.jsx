@@ -1,4 +1,7 @@
-import { Eye, Footprints, Gem, Leaf, Scissors, ShieldCheck, Smile, Sparkles } from 'lucide-react';
+'use client';
+
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight, Eye, Footprints, Gem, Leaf, Scissors, ShieldCheck, Smile, Sparkles } from 'lucide-react';
 
 const services = [
   {
@@ -111,7 +114,45 @@ const services = [
   },
 ];
 
+function ServiceCard({ service }) {
+  const Icon = service.icon;
+
+  return (
+    <article className="glass rounded-[2rem] p-7 transition hover:-translate-y-1 hover:border-blush/40">
+      <div className="mb-8 grid h-13 w-13 place-items-center rounded-2xl bg-champagne text-ink shadow-glow">
+        <Icon size={24} />
+      </div>
+      <div className="flex items-start justify-between gap-4">
+        <h3 className="font-display text-3xl font-semibold">{service.title}</h3>
+        <span className="rounded-full bg-champagne/10 px-3 py-1 text-sm text-champagne">{service.price}</span>
+      </div>
+      <p className="mt-4 leading-7 text-white/62">{service.text}</p>
+      <div className="mt-7 space-y-3 border-t border-white/10 pt-5">
+        {service.items.map(([label, price]) => (
+          <div key={label} className="flex items-start justify-between gap-4 text-sm">
+            <span className="leading-6 text-white/74">{label}</span>
+            <span className="shrink-0 rounded-full bg-ink/60 px-3 py-1 font-semibold text-champagne">
+              {price}
+            </span>
+          </div>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 export default function Services() {
+  const [activeService, setActiveService] = useState(0);
+  const currentService = services[activeService];
+
+  const showPreviousService = () => {
+    setActiveService((current) => (current === 0 ? services.length - 1 : current - 1));
+  };
+
+  const showNextService = () => {
+    setActiveService((current) => (current === services.length - 1 ? 0 : current + 1));
+  };
+
   return (
     <section id="services" className="salon-surface px-4 py-24 md:px-8">
       <div className="relative mx-auto max-w-7xl">
@@ -123,32 +164,50 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
-              <article key={service.title} className="glass rounded-[2rem] p-7 transition hover:-translate-y-1 hover:border-blush/40">
-                <div className="mb-8 grid h-13 w-13 place-items-center rounded-2xl bg-champagne text-ink shadow-glow">
-                  <Icon size={24} />
-                </div>
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="font-display text-3xl font-semibold">{service.title}</h3>
-                  <span className="rounded-full bg-champagne/10 px-3 py-1 text-sm text-champagne">{service.price}</span>
-                </div>
-                <p className="mt-4 leading-7 text-white/62">{service.text}</p>
-                <div className="mt-7 space-y-3 border-t border-white/10 pt-5">
-                  {service.items.map(([label, price]) => (
-                    <div key={label} className="flex items-start justify-between gap-4 text-sm">
-                      <span className="leading-6 text-white/74">{label}</span>
-                      <span className="shrink-0 rounded-full bg-ink/60 px-3 py-1 font-semibold text-champagne">
-                        {price}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </article>
-            );
-          })}
+        <div className="mt-10 md:hidden">
+          <div className="mb-5 flex items-center justify-between gap-4">
+            <p className="text-sm uppercase tracking-[0.28em] text-champagne/70">
+              Service {activeService + 1} of {services.length}
+            </p>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={showPreviousService}
+                className="grid h-11 w-11 place-items-center rounded-full border border-champagne/25 bg-white/4 text-champagne transition hover:border-champagne hover:bg-champagne hover:text-ink"
+                aria-label="Show previous service"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                type="button"
+                onClick={showNextService}
+                className="grid h-11 w-11 place-items-center rounded-full border border-champagne/25 bg-white/4 text-champagne transition hover:border-champagne hover:bg-champagne hover:text-ink"
+                aria-label="Show next service"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </div>
+          <ServiceCard service={currentService} />
+          <div className="mt-6 flex justify-center gap-2">
+            {services.map((service, index) => (
+              <button
+                key={service.title}
+                type="button"
+                onClick={() => setActiveService(index)}
+                className={`h-2.5 rounded-full transition ${
+                  activeService === index ? 'w-8 bg-champagne' : 'w-2.5 bg-white/20 hover:bg-champagne/60'
+                }`}
+                aria-label={`Show ${service.title}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 hidden gap-5 md:grid md:grid-cols-2 xl:grid-cols-3">
+          {services.map((service) => (
+            <ServiceCard key={service.title} service={service} />
+          ))}
         </div>
 
         <div className="mt-6 rounded-3xl border border-white/10 bg-white/4 px-6 py-5 text-sm leading-7 text-white/62">

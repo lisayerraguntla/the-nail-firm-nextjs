@@ -81,8 +81,23 @@ const reviews = [
 const reviewsPerPage = 6;
 const totalPages = Math.ceil(reviews.length / reviewsPerPage);
 
+function ReviewCard({ review, number }) {
+  return (
+    <article className="min-h-[250px] rounded-[1.65rem] border border-white/10 bg-[#070706]/78 p-5 shadow-2xl shadow-black/20 backdrop-blur-xl transition hover:-translate-y-1 hover:border-champagne/35">
+      <div className="mb-5 flex items-center justify-between gap-4">
+        <span className="rounded-full border border-champagne/20 bg-champagne/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-champagne">
+          {review.tag}
+        </span>
+        <span className="font-display text-2xl text-champagne/55">{String(number).padStart(2, '0')}</span>
+      </div>
+      <p className="text-lg leading-8 text-white/78">“{review.quote}”</p>
+    </article>
+  );
+}
+
 export default function Reviews() {
   const [page, setPage] = useState(0);
+  const [mobileReview, setMobileReview] = useState(0);
   const start = page * reviewsPerPage;
   const visibleReviews = reviews.slice(start, start + reviewsPerPage);
 
@@ -92,6 +107,14 @@ export default function Reviews() {
 
   const goToNextPage = () => {
     setPage((currentPage) => (currentPage === totalPages - 1 ? 0 : currentPage + 1));
+  };
+
+  const goToPreviousReview = () => {
+    setMobileReview((currentReview) => (currentReview === 0 ? reviews.length - 1 : currentReview - 1));
+  };
+
+  const goToNextReview = () => {
+    setMobileReview((currentReview) => (currentReview === reviews.length - 1 ? 0 : currentReview + 1));
   };
 
   return (
@@ -123,7 +146,51 @@ export default function Reviews() {
           </div>
         </div>
 
-        <div className="mb-8 flex items-center justify-between gap-4">
+        <div className="mb-8 flex items-center justify-between gap-4 md:hidden">
+          <div>
+            <p className="text-sm uppercase tracking-[0.28em] text-champagne/70">
+              Review {mobileReview + 1} of {reviews.length}
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={goToPreviousReview}
+              className="grid h-11 w-11 place-items-center rounded-full border border-champagne/25 bg-white/4 text-champagne transition hover:border-champagne hover:bg-champagne hover:text-ink"
+              aria-label="Show previous review"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              type="button"
+              onClick={goToNextReview}
+              className="grid h-11 w-11 place-items-center rounded-full border border-champagne/25 bg-white/4 text-champagne transition hover:border-champagne hover:bg-champagne hover:text-ink"
+              aria-label="Show next review"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+
+        <div className="md:hidden">
+          <ReviewCard review={reviews[mobileReview]} number={mobileReview + 1} />
+        </div>
+
+        <div className="mt-8 flex justify-center gap-2 md:hidden">
+          {reviews.map((review, index) => (
+            <button
+              key={review.quote}
+              type="button"
+              onClick={() => setMobileReview(index)}
+              className={`h-2.5 rounded-full transition ${
+                mobileReview === index ? 'w-8 bg-champagne' : 'w-2.5 bg-white/20 hover:bg-champagne/60'
+              }`}
+              aria-label={`Show review ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        <div className="mb-8 hidden items-center justify-between gap-4 md:flex">
           <div>
             <p className="text-sm uppercase tracking-[0.28em] text-champagne/70">
               Page {page + 1} of {totalPages}
@@ -149,26 +216,13 @@ export default function Reviews() {
           </div>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="hidden gap-5 md:grid md:grid-cols-2 xl:grid-cols-3">
           {visibleReviews.map((review, index) => (
-            <article
-              key={review.quote}
-              className="min-h-[250px] rounded-[1.65rem] border border-white/10 bg-[#070706]/78 p-5 shadow-2xl shadow-black/20 backdrop-blur-xl transition hover:-translate-y-1 hover:border-champagne/35"
-            >
-              <div className="mb-5 flex items-center justify-between gap-4">
-                <span className="rounded-full border border-champagne/20 bg-champagne/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-champagne">
-                  {review.tag}
-                </span>
-                <span className="font-display text-2xl text-champagne/55">
-                  {String(start + index + 1).padStart(2, '0')}
-                </span>
-              </div>
-              <p className="text-lg leading-8 text-white/78">“{review.quote}”</p>
-            </article>
+            <ReviewCard key={review.quote} review={review} number={start + index + 1} />
           ))}
         </div>
 
-        <div className="mt-8 flex justify-center gap-2">
+        <div className="mt-8 hidden justify-center gap-2 md:flex">
           {Array.from({ length: totalPages }).map((_, index) => (
             <button
               key={index}

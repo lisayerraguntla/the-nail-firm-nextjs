@@ -53,14 +53,14 @@ export default function Hero() {
           className="relative"
         >
           <div className="absolute -inset-8 rounded-[3rem] bg-champagne/10 blur-3xl" />
-          <div className="glass relative grid min-h-[520px] place-items-center overflow-hidden rounded-[2.2rem] p-6 md:min-h-[610px]">
+          <div className="glass relative grid min-h-130 place-items-center overflow-hidden rounded-[2.2rem] p-6 md:min-h-152.5">
             <Image
               src="/images/the-nail-firm-logo.png"
               alt="The Nail Firm logo"
               width={1100}
               height={1100}
               priority
-              className="h-auto w-full max-w-[540px] rounded-full object-contain shadow-glow"
+              className="h-auto w-full max-w-135 rounded-full object-contain shadow-glow"
             />
           </div>
         </motion.div>
